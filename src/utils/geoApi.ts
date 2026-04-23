@@ -20,3 +20,25 @@ export const reverseGeocode = async (lat: number, lon: number): Promise<string> 
     return 'Locating...';
   }
 };
+export interface LocationResult {
+  name: string;
+  latitude: number;
+  longitude: number;
+  country?: string;
+  admin1?: string;
+}
+
+export const searchLocations = async (query: string): Promise<LocationResult[]> => {
+  if (query.length < 2) return [];
+  
+  try {
+    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=5&language=en&format=json`;
+    const response = await fetch(url);
+    if (!response.ok) return [];
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Location search error", error);
+    return [];
+  }
+};

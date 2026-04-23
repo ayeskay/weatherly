@@ -12,6 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   padding: 16px 24px;
   background-color: color-mix(in srgb, var(--md-sys-color-surface) 85%, transparent);
   backdrop-filter: blur(10px);

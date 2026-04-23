@@ -1,0 +1,116 @@
+.location-search {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  z-index: 100;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--md-sys-color-surface-variant) 40%, transparent);
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-input-wrapper:focus-within {
+  background: var(--md-sys-color-surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--md-sys-color-primary);
+}
+
+.search-icon {
+  color: var(--md-sys-color-on-surface-variant);
+  margin-right: 10px;
+}
+
+.search-input-wrapper input {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.95rem;
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+}
+
+.search-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--md-sys-color-surface-variant);
+  border-top-color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: dropdown-fade 0.2s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes dropdown-fade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.search-result-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+  color: var(--md-sys-color-on-surface);
+}
+
+.search-result-item:hover {
+  background: rgba(var(--md-sys-color-primary-rgb), 0.08);
+  background: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+}
+
+.current-location {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--md-sys-color-primary);
+}
+
+.result-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-text strong {
+  font-size: 0.9rem;
+}
+
+.result-text span {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.search-no-results {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .location-search {
+    max-width: 100%;
+    margin-top: 12px;
+  }
+}

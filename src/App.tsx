@@ -16,25 +16,34 @@ import { VisibilityCard } from './components/VisibilityCard';
 import { PressureCard } from './components/PressureCard';
 import { DewPointCard } from './components/DewPointCard';
 import { WindDirectionCard } from './components/WindDirectionCard';
+import { LocationSearch } from './components/LocationSearch';
 import './styles/global.css';
 import './App.css';
 
 function App() {
   const { coordinates, error: geoError, loading: geoLoading, isFallback } = useGeolocation();
+  const [activeCoords, setActiveCoords] = useState<{ lat: number; lon: number } | null>(null);
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [city, setCity] = useState('Locating...');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!coordinates) return;
+    // If no manual location is set, sync with auto-detected coordinates
+    if (!activeCoords && coordinates) {
+      setActiveCoords(coordinates);
+    }
+  }, [coordinates, activeCoords]);
+
+  useEffect(() => {
+    if (!activeCoords) return;
 
     let isActive = true;
 
     const loadDashboard = async () => {
       try {
         const [weatherData, cityName] = await Promise.all([
-          fetchWeather(coordinates.lat, coordinates.lon),
-          reverseGeocode(coordinates.lat, coordinates.lon),
+          fetchWeather(activeCoords.lat, activeCoords.lon),
+          reverseGeocode(activeCoords.lat, activeCoords.lon),
         ]);
 
         if (!isActive) return;
@@ -53,9 +62,19 @@ function App() {
     return () => {
       isActive = false;
     };
-  }, [coordinates]);
+  }, [activeCoords]);
 
-  const weatherLoading = Boolean(coordinates) && !weather && !error;
+  const handleSelectLocation = (lat: number, lon: number) => {
+    setActiveCoords({ lat, lon });
+  };
+
+  const handleSelectCurrentLocation = () => {
+    if (coordinates) {
+      setActiveCoords(coordinates);
+    }
+  };
+
+  const weatherLoading = Boolean(activeCoords) && !weather && !error;
 
   const renderContent = () => {
     if (geoLoading || weatherLoading) {
@@ -134,6 +153,10 @@ function App() {
             <p className="logo-subtitle">Live local conditions with actionable daily insights</p>
           </div>
         </div>
+        <LocationSearch 
+          onSelectLocation={handleSelectLocation} 
+          onSelectCurrentLocation={handleSelectCurrentLocation} 
+        />
       </header>
 
       <main className="main-content">{renderContent()}</main>
