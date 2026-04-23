@@ -1,0 +1,19 @@
+---
+- name: Deploy Weatherly Application
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Pull the latest Docker image
+      docker_image:
+        name: "{{ docker_registry }}/weatherly-app:latest"
+        source: pull
+
+    - name: Ensure the container is running
+      docker_container:
+        name: weatherly
+        image: "{{ docker_registry }}/weatherly-app:latest"
+        state: started
+        restart: yes
+        ports:
+          - "80:80"

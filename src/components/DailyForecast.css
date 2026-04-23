@@ -1,0 +1,38 @@
+.daily-forecast {
+  padding: 16px;
+}
+
+.daily-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.daily-item {
+  display: grid;
+  grid-template-columns: 68px 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.day-label {
+  font-weight: 600;
+}
+
+.day-rain {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 640px) {
+  .daily-item {
+    grid-template-columns: 58px 24px 1fr;
+  }
+
+  .day-rain {
+    grid-column: 1 / -1;
+  }
+}

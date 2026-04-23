@@ -1,0 +1,54 @@
+:root {
+  /* Material Colors - M3 inspired */
+  --md-sys-color-primary: #0061a4;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d1e4ff;
+  --md-sys-color-on-primary-container: #001d36;
+  
+  --md-sys-color-surface: #fdfcff;
+  --md-sys-color-on-surface: #1a1c1e;
+  --md-sys-color-surface-variant: #dfe2eb;
+  --md-sys-color-on-surface-variant: #43474e;
+  
+  --md-sys-color-background: #fdfcff;
+  --md-sys-color-on-background: #1a1c1e;
+
+  /* Weather Specific Gradients */
+  --grad-sunny: linear-gradient(135deg, #ff9a44 0%, #fc6076 100%);
+  --grad-cloudy: linear-gradient(135deg, #8e9eab 0%, #eef2f3 100%);
+  --grad-rainy: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --grad-night: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2a5298 100%);
+  --grad-storm: linear-gradient(135deg, #374785 0%, #24305e 100%);
+
+  /* Semantic Status */
+  --status-good: #1a7d3f;
+  --status-moderate: #8a5a00;
+  --status-alert: #a34f00;
+  --status-danger: #922323;
+
+  /* Elevation / Shadows */
+  --md-sys-elevation-1: 0px 1px 2px 0px rgba(0,0,0,0.3), 0px 1px 3px 1px rgba(0,0,0,0.15);
+  --md-sys-elevation-2: 0px 1px 2px 0px rgba(0,0,0,0.3), 0px 2px 6px 2px rgba(0,0,0,0.15);
+  --md-sys-elevation-3: 0px 1px 3px 0px rgba(0,0,0,0.3), 0px 4px 8px 3px rgba(0,0,0,0.15);
+  
+  /* Radii */
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 24px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-sys-color-primary: #9ecaef;
+    --md-sys-color-on-primary: #003258;
+    --md-sys-color-primary-container: #00497d;
+    --md-sys-color-on-primary-container: #d1e4ff;
+    
+    --md-sys-color-surface: #1a1c1e;
+    --md-sys-color-on-surface: #e2e2e6;
+    --md-sys-color-surface-variant: #43474e;
+    --md-sys-color-on-surface-variant: #c3c7cf;
+    
+    --md-sys-color-background: #1a1c1e;
+    --md-sys-color-on-background: #e2e2e6;
+  }
+}

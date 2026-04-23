@@ -1,0 +1,34 @@
+.comfort-card {
+  padding: 16px;
+}
+
+.comfort-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.comfort-score strong {
+  font-size: 1.5rem;
+}
+
+.comfort-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.comfort-grid div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.comfort-hydration {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}

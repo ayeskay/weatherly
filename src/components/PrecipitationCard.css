@@ -1,0 +1,24 @@
+.precip-card {
+  padding: 16px;
+}
+
+.precip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.precip-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.precip-now {
+  margin-top: 10px;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}

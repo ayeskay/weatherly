@@ -1,0 +1,33 @@
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.detail-card {
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--md-sys-elevation-1);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  opacity: 0.84;
+}
+
+.detail-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,34 @@
+.air-quality-card {
+  padding: 16px;
+}
+
+.air-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.air-main strong {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.air-main span {
+  opacity: 0.8;
+}
+
+.air-band {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.aqi-good { background: rgba(29, 184, 84, 0.2); color: #1a7d3f; }
+.aqi-moderate { background: rgba(255, 183, 0, 0.2); color: #8a5a00; }
+.aqi-sensitive { background: rgba(255, 138, 0, 0.2); color: #a34f00; }
+.aqi-unhealthy { background: rgba(214, 48, 49, 0.2); color: #922323; }
+.aqi-very-unhealthy { background: rgba(126, 56, 120, 0.25); color: #5b2556; }
+.aqi-unknown { background: rgba(133, 144, 166, 0.2); color: #4b5568; }
