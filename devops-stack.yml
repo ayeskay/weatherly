@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   jenkins:
     image: jenkins/jenkins:lts
@@ -29,6 +27,7 @@ services:
 
 networks:
   devops-network:
+    name: devops-network
     driver: bridge
 
 volumes:
