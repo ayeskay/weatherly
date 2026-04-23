@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# ☁️ Weatherly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Weatherly** is a premium, high-performance weather dashboard built with React, TypeScript, and Vite. It provides real-time local conditions with a focus on actionable daily insights and stunning visual aesthetics.
 
-Currently, two official plugins are available:
+![Weatherly Dashboard Preview](./public/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- 🛰️ **Real-time Geolocation**: Automatically detects your location to provide hyper-local weather data.
+- 💎 **Glassmorphism Design**: A modern, premium UI featuring soft gradients, backdrop blurs, and Material 3 design principles.
+- 📊 **Comprehensive Metrics**:
+  - **Core**: Temperature, Feels Like, Humidity, Wind Speed, and UV Index.
+  - **Feature Cards**: Visibility, Surface Pressure, Dew Point, and Wind Direction.
+  - **Advanced**: Rain Outlook (chance and total) and Air Quality (AQI).
+- 🕒 **Forecasts**:
+  - **Hourly**: 24-hour horizontal scrolling forecast with precipitation probability.
+  - **Daily**: 7-day overview with max/min temperatures and conditions.
+- 💡 **Actionable Insights**: Context-aware recommendations for outdoor activities, UV protection, and hydration.
+- 🌗 **Adaptive Themes**: Seamless transitions between light and dark modes based on system preferences.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: [React 18](https://reactjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Bundler**: [Vite](https://vitejs.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Styling**: Vanilla CSS with custom properties (CSS Variables)
+- **API**: [Open-Meteo](https://open-meteo.com/) (Free weather & air quality data)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ayeskay/weatherly.git
+   cd weatherly
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 📐 Design Philosophy
+
+Weatherly follows a strict **unified grid system**. Every section (Hero, Features, Metrics) is aligned to a shared column template, ensuring a balanced and professional look across all screen sizes. The UI uses a "Panel" architecture for consistent elevation and interactive hover effects.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+Built with ❤️ by [ayeskay](https://github.com/ayeskay)
