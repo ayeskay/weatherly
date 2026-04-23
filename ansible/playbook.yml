@@ -1,19 +1,21 @@
 ---
-- name: Deploy Weatherly Application
-  hosts: webservers
-  become: yes
+- name: Deploy Weatherly Application Locally
+  hosts: localhost
+  connection: local
 
   tasks:
-    - name: Pull the latest Docker image
-      docker_image:
-        name: "{{ docker_registry }}/weatherly-app:latest"
-        source: pull
-
-    - name: Ensure the container is running
+    - name: Stop and remove existing container
       docker_container:
         name: weatherly
-        image: "{{ docker_registry }}/weatherly-app:latest"
+        state: absent
+
+    - name: Run the latest Weatherly container
+      docker_container:
+        name: weatherly
+        image: weatherly-app:latest
         state: started
         restart: yes
         ports:
           - "80:80"
+        networks:
+          - name: devops-network
