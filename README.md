@@ -7,6 +7,7 @@
 ## ✨ Features
 
 - 🛰️ **Real-time Geolocation**: Automatically detects your location to provide hyper-local weather data.
+- 🔍 **Interactive Location Search**: Search for any city worldwide with intelligent auto-suggest and a "Current Location" GPS shortcut.
 - 💎 **Glassmorphism Design**: A modern, premium UI featuring soft gradients, backdrop blurs, and Material 3 design principles.
 - 📊 **Comprehensive Metrics**:
   - **Core**: Temperature, Feels Like, Humidity, Wind Speed, and UV Index.
@@ -60,6 +61,14 @@
 ## 📐 Design Philosophy
 
 Weatherly follows a strict **unified grid system**. Every section (Hero, Features, Metrics) is aligned to a shared column template, ensuring a balanced and professional look across all screen sizes. The UI uses a "Panel" architecture for consistent elevation and interactive hover effects.
+
+## 🏗️ DevOps & Infrastructure
+
+The project is backed by a local CI/CD pipeline for quality assurance and automated deployment:
+- **Docker**: Containerized production environment (Nginx).
+- **Jenkins**: Automated build and deployment pipelines.
+- **SonarQube**: Static code analysis and quality gate enforcement.
+- **Ansible**: Infrastructure-as-code for automated local deployments.
 
 ## 📄 License
 
