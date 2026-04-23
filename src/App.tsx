@@ -12,6 +12,10 @@ import { PrecipitationCard } from './components/PrecipitationCard';
 import { AirQualityCard } from './components/AirQualityCard';
 import { ComfortIndexCard } from './components/ComfortIndexCard';
 import { WeatherInsights } from './components/WeatherInsights';
+import { VisibilityCard } from './components/VisibilityCard';
+import { PressureCard } from './components/PressureCard';
+import { DewPointCard } from './components/DewPointCard';
+import { WindDirectionCard } from './components/WindDirectionCard';
 import './styles/global.css';
 import './App.css';
 
@@ -86,22 +90,33 @@ function App() {
           <div className="fallback-banner">Location disabled. Showing generalized IP region.</div>
         )}
 
+        {/* Hero: main weather card + side panel with sun, aqi, visibility, pressure */}
         <section className="hero-grid">
           <WeatherCard data={weather} city={city} />
           <div className="hero-side">
             <SunTimesCard data={weather} />
             <AirQualityCard data={weather} />
+            <VisibilityCard data={weather} />
+            <PressureCard data={weather} />
           </div>
         </section>
 
-        <section className="metrics-grid">
-          <DetailGrid data={weather} />
+        {/* Feature strip: dew point, wind direction, plus detail metrics */}
+        <section className="feature-grid">
+          <DewPointCard data={weather} />
+          <WindDirectionCard data={weather} />
           <PrecipitationCard data={weather} />
           <ComfortIndexCard data={weather} />
         </section>
 
-        <section className="forecast-grid">
+        {/* Core details + hourly */}
+        <section className="metrics-grid">
+          <DetailGrid data={weather} />
           <HourlyForecast data={weather} />
+        </section>
+
+        {/* Forecasts */}
+        <section className="forecast-grid">
           <DailyForecast data={weather} />
           <WeatherInsights data={weather} />
         </section>

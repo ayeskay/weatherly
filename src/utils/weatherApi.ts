@@ -9,6 +9,10 @@ export interface WeatherData {
     weathercode: number;
     is_day: number;
     time: string;
+    visibility: number;
+    surface_pressure: number;
+    dew_point: number;
+    wind_direction: number;
   };
   hourly: {
     time: string[];
@@ -86,7 +90,7 @@ const getOutdoorScore = (
 
 export const fetchWeather = async (lat: number, lon: number): Promise<WeatherData> => {
   // Main Weather Endpoint
-  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,wind_speed_10m,wind_gusts_10m,precipitation&hourly=temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,uv_index,precipitation_probability,precipitation&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max,precipitation_sum,wind_speed_10m_max&timezone=auto`;
+  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code,wind_speed_10m,wind_gusts_10m,precipitation,visibility,surface_pressure,dew_point_2m,wind_direction_10m&hourly=temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,uv_index,precipitation_probability,precipitation&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max,precipitation_sum,wind_speed_10m_max&timezone=auto`;
   
   // AQI Endpoint
   const aqiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi&timezone=auto`;
@@ -129,7 +133,11 @@ export const fetchWeather = async (lat: number, lon: number): Promise<WeatherDat
       precipitation: data.current.precipitation,
       weathercode: data.current.weather_code,
       is_day: data.current.is_day,
-      time: data.current.time
+      time: data.current.time,
+      visibility: data.current.visibility ?? 10000,
+      surface_pressure: data.current.surface_pressure ?? 1013,
+      dew_point: data.current.dew_point_2m ?? 0,
+      wind_direction: data.current.wind_direction_10m ?? 0,
     },
     hourly: {
       time: data.hourly.time ?? [],

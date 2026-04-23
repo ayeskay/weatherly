@@ -74,32 +74,50 @@
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   Dashboard — single-column container for section rows
+   ═══════════════════════════════════════════════════════════════ */
+
 .dashboard {
-  width: min(1180px, 100%);
+  width: min(1300px, 100%);
   display: grid;
   gap: 16px;
   animation: reveal 420ms ease-out;
 }
 
 @keyframes reveal {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
+
+/* Staggered entrance per section */
+.dashboard > *:nth-child(1) { animation: card-fade 450ms ease-out both; }
+.dashboard > *:nth-child(2) { animation: card-fade 450ms 60ms ease-out both; }
+.dashboard > *:nth-child(3) { animation: card-fade 450ms 120ms ease-out both; }
+.dashboard > *:nth-child(4) { animation: card-fade 450ms 180ms ease-out both; }
+.dashboard > *:nth-child(5) { animation: card-fade 450ms 240ms ease-out both; }
+
+@keyframes card-fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Panel — shared card surface
+   ═══════════════════════════════════════════════════════════════ */
 
 .panel {
   border-radius: var(--md-sys-shape-corner-medium);
   box-shadow: var(--md-sys-elevation-1);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.panel:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--md-sys-elevation-2);
 }
 
 .panel-title {
@@ -117,36 +135,91 @@
   text-align: center;
 }
 
-.hero-grid {
+/* ═══════════════════════════════════════════════════════════════
+   UNIFIED 4-COLUMN GRID — every section uses the same columns
+   so card edges align vertically across all rows
+   ═══════════════════════════════════════════════════════════════ */
+
+.hero-grid,
+.feature-grid,
+.metrics-grid {
   display: grid;
-  grid-template-columns: minmax(300px, 1.2fr) minmax(240px, 0.8fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+/* ─── Hero row ─────────────────────────────────────────────────── */
+
+.hero-grid > .weather-card {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 .hero-side {
+  grid-column: span 2;
+  grid-row: span 2;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 16px;
 }
 
-.metrics-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 16px;
+/* ─── Feature row (4 equal cards) ──────────────────────────────── */
+/* auto-flows: each card = 1 column — no extra rules needed       */
+
+/* ─── Metrics row ──────────────────────────────────────────────── */
+
+.metrics-grid > .detail-grid {
+  grid-column: span 1;
 }
+
+.metrics-grid > .hourly-container {
+  grid-column: span 3;
+}
+
+/* ─── Forecast row (stacks vertically, full width) ─────────────── */
 
 .forecast-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 16px;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   Responsive — Tablet
+   ═══════════════════════════════════════════════════════════════ */
+
 @media (max-width: 1024px) {
-  .hero-grid,
-  .metrics-grid,
-  .forecast-grid {
+  .hero-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-grid > .weather-card {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .hero-side {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid > .detail-grid,
+  .metrics-grid > .hourly-container {
+    grid-column: span 1;
+  }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive — Mobile
+   ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 640px) {
   .main-content {
@@ -159,5 +232,18 @@
 
   .logo-subtitle {
     display: none;
+  }
+
+  .hero-side {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
   }
 }

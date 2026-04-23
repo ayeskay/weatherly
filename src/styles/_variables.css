@@ -19,6 +19,16 @@
   --grad-rainy: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --grad-night: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2a5298 100%);
   --grad-storm: linear-gradient(135deg, #374785 0%, #24305e 100%);
+  --grad-sunny-deep: linear-gradient(145deg, #ff8c42 0%, #f1547d 48%, #6e4ad9 100%);
+  --grad-cloudy-deep: linear-gradient(145deg, #6d7f94 0%, #a8b8c9 55%, #dbe4ee 100%);
+  --grad-rainy-deep: linear-gradient(145deg, #0f7bb9 0%, #20a5dd 45%, #57d4ff 100%);
+  --grad-night-deep: linear-gradient(145deg, #09122b 0%, #1d2f59 46%, #3e5697 100%);
+  --grad-storm-deep: linear-gradient(145deg, #18213f 0%, #2f2c6e 40%, #14579c 100%);
+  --glow-sunny: rgba(255, 204, 94, 0.5);
+  --glow-cloudy: rgba(214, 230, 248, 0.38);
+  --glow-rainy: rgba(123, 235, 255, 0.4);
+  --glow-night: rgba(99, 142, 255, 0.34);
+  --glow-storm: rgba(167, 160, 255, 0.38);
 
   /* Semantic Status */
   --status-good: #1a7d3f;
