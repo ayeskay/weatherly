@@ -13,6 +13,17 @@
   --md-sys-color-background: #fdfcff;
   --md-sys-color-on-background: #1a1c1e;
 
+  /* Theme-aware surfaces */
+  --glass-surface: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(26, 28, 30, 0.1);
+  --card-surface: rgba(255, 255, 255, 0.58);
+  --card-surface-strong: rgba(255, 255, 255, 0.82);
+  --surface-divider: rgba(26, 28, 30, 0.1);
+  --scroll-thumb: rgba(67, 71, 78, 0.32);
+  --app-glow-cool: rgba(102, 174, 255, 0.2);
+  --app-glow-warm: rgba(255, 170, 112, 0.18);
+  --focus-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
   /* Weather Specific Gradients */
   --grad-sunny: linear-gradient(135deg, #ff9a44 0%, #fc6076 100%);
   --grad-cloudy: linear-gradient(135deg, #8e9eab 0%, #eef2f3 100%);
@@ -46,8 +57,33 @@
   --md-sys-shape-corner-large: 24px;
 }
 
+:root[data-theme='dark'] {
+  --md-sys-color-primary: #9ecaef;
+  --md-sys-color-on-primary: #003258;
+  --md-sys-color-primary-container: #00497d;
+  --md-sys-color-on-primary-container: #d1e4ff;
+  
+  --md-sys-color-surface: #1a1c1e;
+  --md-sys-color-on-surface: #e2e2e6;
+  --md-sys-color-surface-variant: #43474e;
+  --md-sys-color-on-surface-variant: #c3c7cf;
+  
+  --md-sys-color-background: #1a1c1e;
+  --md-sys-color-on-background: #e2e2e6;
+
+  --glass-surface: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --card-surface: rgba(255, 255, 255, 0.1);
+  --card-surface-strong: rgba(255, 255, 255, 0.2);
+  --surface-divider: rgba(255, 255, 255, 0.1);
+  --scroll-thumb: rgba(255, 255, 255, 0.35);
+  --app-glow-cool: rgba(102, 174, 255, 0.2);
+  --app-glow-warm: rgba(255, 170, 112, 0.18);
+  --focus-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --md-sys-color-primary: #9ecaef;
     --md-sys-color-on-primary: #003258;
     --md-sys-color-primary-container: #00497d;
@@ -60,5 +96,15 @@
     
     --md-sys-color-background: #1a1c1e;
     --md-sys-color-on-background: #e2e2e6;
+
+    --glass-surface: rgba(0, 0, 0, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --card-surface: rgba(255, 255, 255, 0.1);
+    --card-surface-strong: rgba(255, 255, 255, 0.2);
+    --surface-divider: rgba(255, 255, 255, 0.1);
+    --scroll-thumb: rgba(255, 255, 255, 0.35);
+    --app-glow-cool: rgba(102, 174, 255, 0.2);
+    --app-glow-warm: rgba(255, 170, 112, 0.18);
+    --focus-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }

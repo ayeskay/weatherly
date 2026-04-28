@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CloudRain } from 'lucide-react';
+import { CloudRain, Moon, Sun } from 'lucide-react';
 import { useGeolocation } from './hooks/useGeolocation';
 import { fetchWeather, type WeatherData } from './utils/weatherApi';
 import { reverseGeocode } from './utils/geoApi';
@@ -26,6 +26,18 @@ function App() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [city, setCity] = useState('Locating...');
   const [error, setError] = useState<string | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('weatherly-theme');
+    if (savedTheme === 'dark') return true;
+    if (savedTheme === 'light') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    const theme = isDarkMode ? 'dark' : 'light';
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('weatherly-theme', theme);
+  }, [isDarkMode]);
 
   useEffect(() => {
     // If no manual location is set, sync with auto-detected coordinates
@@ -157,6 +169,16 @@ function App() {
           onSelectLocation={handleSelectLocation} 
           onSelectCurrentLocation={handleSelectCurrentLocation} 
         />
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-pressed={isDarkMode}
+          onClick={() => setIsDarkMode((current) => !current)}
+        >
+          {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          <span>{isDarkMode ? 'Light' : 'Dark'}</span>
+        </button>
       </header>
 
       <main className="main-content">{renderContent()}</main>
